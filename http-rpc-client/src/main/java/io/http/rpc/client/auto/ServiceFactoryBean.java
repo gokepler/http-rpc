@@ -2,7 +2,7 @@ package io.http.rpc.client.auto;
 
 import io.http.rpc.client.CoreServiceInvoker;
 import io.http.rpc.client.ProxyBuilder;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.springframework.beans.factory.FactoryBean;
 
 /**

@@ -1,4 +1,4 @@
-package io.http.rpc.serialize;
+package io.http.rpc.core.serialize;
 
 /**
  *

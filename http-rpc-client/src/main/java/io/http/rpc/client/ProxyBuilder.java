@@ -1,7 +1,7 @@
 package io.http.rpc.client;
 
-import io.http.rpc.annotation.ServiceNamespace;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.annotation.ServiceNamespace;
+import io.http.rpc.core.serialize.SerializeScheme;
 import net.sf.cglib.proxy.Enhancer;
 import org.apache.commons.lang3.StringUtils;
 

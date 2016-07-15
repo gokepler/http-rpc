@@ -1,7 +1,7 @@
 package io.http.rpc.client.auto;
 
-import io.http.rpc.annotation.ServiceNamespace;
 import io.http.rpc.client.ServiceProxyFactory;
+import io.http.rpc.core.annotation.ServiceNamespace;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;

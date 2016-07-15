@@ -1,6 +1,6 @@
 package io.http.rpc.server;
 
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.springframework.web.HttpRequestHandler;
 
 /**

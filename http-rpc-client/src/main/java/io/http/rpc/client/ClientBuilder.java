@@ -1,6 +1,6 @@
 package io.http.rpc.client;
 
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.apache.commons.lang3.StringUtils;
 
 /**

@@ -1,7 +1,7 @@
 package io.http.rpc.server.auto;
 
-import io.http.rpc.annotation.ServiceMapping;
-import io.http.rpc.annotation.ServiceNamespace;
+import io.http.rpc.core.annotation.ServiceMapping;
+import io.http.rpc.core.annotation.ServiceNamespace;
 import io.http.rpc.server.ServiceRegistrationCenter;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;

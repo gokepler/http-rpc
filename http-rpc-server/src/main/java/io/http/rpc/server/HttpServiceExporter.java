@@ -1,7 +1,7 @@
 package io.http.rpc.server;
 
 
-import io.http.rpc.serialize.ProtoSerializeScheme;
+import io.http.rpc.core.serialize.ProtoSerializeScheme;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 

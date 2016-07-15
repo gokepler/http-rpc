@@ -1,4 +1,4 @@
-package io.http.rpc.annotation;
+package io.http.rpc.core.annotation;
 
 import java.lang.annotation.*;
 

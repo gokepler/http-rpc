@@ -1,10 +1,10 @@
 package io.http.rpc.server;
 
-import io.http.rpc.CoreServiceInvoker;
-import io.http.rpc.RequestBean;
-import io.http.rpc.ServiceInvokeException;
-import io.http.rpc.serialize.ProtoSerializeScheme;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.CoreServiceInvoker;
+import io.http.rpc.core.RequestBean;
+import io.http.rpc.core.ServiceInvokeException;
+import io.http.rpc.core.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.ProtoSerializeScheme;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.BeansException;
@@ -28,7 +28,7 @@ public class HttpCoreService implements CoreServiceInvoker, InitializingBean, Ap
     private static final Log logger = LogFactory.getLog(HttpCoreService.class);
 
     @Override
-    public byte[] invoke(String namespace, String name, byte[][] parameterData) {
+    public Object invoke(String namespace, String name, Object[] parameterData) {
 
         ServiceDefinition serviceDefinition
                 = registrationCenter.getServiceDefinition(namespace, name);
@@ -41,7 +41,7 @@ public class HttpCoreService implements CoreServiceInvoker, InitializingBean, Ap
 
             Object bean = applicationContext.getBean(cls);
 
-            return PerformanceUtil.invoke(bean, method, parameterData, serializeScheme);
+            return PerformanceUtil.invoke(bean, method, parameterData);
 
         } else {
 
@@ -53,7 +53,9 @@ public class HttpCoreService implements CoreServiceInvoker, InitializingBean, Ap
 
         RequestBean bean = serializeScheme.deserialize(data, RequestBean.class);
 
-        return invoke(bean.getNamespace(), bean.getName(), bean.getParameters());
+        Object rtv = invoke(bean.getNamespace(), bean.getName(), bean.getParameters());
+
+        return serializeScheme.serialize(rtv);
     }
 
     public void setRegistrationCenter(ServiceRegistrationCenter registrationCenter) {

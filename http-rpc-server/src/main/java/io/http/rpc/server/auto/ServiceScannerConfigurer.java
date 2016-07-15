@@ -1,6 +1,6 @@
 package io.http.rpc.server.auto;
 
-import io.http.rpc.annotation.ServiceNamespace;
+import io.http.rpc.core.annotation.ServiceNamespace;
 import io.http.rpc.server.ServiceExporter;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;

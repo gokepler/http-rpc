@@ -1,4 +1,4 @@
-package io.http.rpc;
+package io.http.rpc.core;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -8,16 +8,15 @@ import java.util.Arrays;
  */
 public final class RequestBean implements Serializable {
 
-    private static final long serialVersionUID = -2875964084808518400L;
-
+    private static final long serialVersionUID = -1894439850764453993L;
     private String namespace;
     private String name;
 
-    private byte[][] parameters;
+    private Object[] parameters;
 
     public RequestBean() {}
 
-    public RequestBean(String namespace, String name, byte[][] parameters) {
+    public RequestBean(String namespace, String name, Object[] parameters) {
         this.namespace = namespace;
         this.name = name;
         this.parameters = parameters;
@@ -39,11 +38,11 @@ public final class RequestBean implements Serializable {
         this.name = name;
     }
 
-    public byte[][] getParameters() {
+    public Object[] getParameters() {
         return parameters;
     }
 
-    public void setParameters(byte[][] parameters) {
+    public void setParameters(Object[] parameters) {
         this.parameters = parameters;
     }
 

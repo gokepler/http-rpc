@@ -1,7 +1,6 @@
 package io.http.rpc.server;
 
-import io.http.rpc.ServiceInvokeException;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.ServiceInvokeException;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -12,13 +11,13 @@ import java.lang.reflect.Parameter;
  */
 public class PerformanceUtil {
 
-    public static byte[] invoke(Object bean, Method method, byte[][] parameterData, SerializeScheme serializeScheme) {
+    public static Object invoke(Object bean, Method method, Object[] parameterData) {
 
         int parameterCount = parameterData.length;
 
         if(method.getParameterCount() != parameterData.length) {
 
-            throw new ServiceInvokeException("parameter is not match.");
+            throw new ServiceInvokeException("service parameter count is not match.");
         }
 
         Parameter[] parameters = method.getParameters();
@@ -29,16 +28,26 @@ public class PerformanceUtil {
 
             Class<?> cls = parameters[i].getType();
 
-            Object object = serializeScheme.deserialize(parameterData[i], cls);
+            if(parameterData[i] == null) {
 
-            parameter[i] = object;
+                parameter[i] = null;
+
+                continue;
+            }
+
+            if(cls.equals(parameterData[i].getClass())) {
+
+                parameter[i] = parameterData[i];
+
+            } else {
+
+                throw new ServiceInvokeException("service parameter type is not match.");
+            }
         }
 
         try {
 
-            Object rtv = method.invoke(bean, parameter);
-
-            return serializeScheme.serialize(rtv);
+            return method.invoke(bean, parameter);
 
         } catch (IllegalAccessException | InvocationTargetException e) {
 

@@ -1,6 +1,6 @@
 package io.http.rpc.server;
 
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.apache.commons.io.IOUtils;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;

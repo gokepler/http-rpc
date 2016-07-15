@@ -1,7 +1,7 @@
 package io.http.rpc.client.auto;
 
 import io.http.rpc.client.CoreServiceInvoker;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinitionHolder;
 import org.springframework.beans.factory.support.AbstractBeanDefinition;

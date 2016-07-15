@@ -1,8 +1,8 @@
 package io.http.rpc.client;
 
-import io.http.rpc.RequestBean;
-import io.http.rpc.annotation.ServiceMapping;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.RequestBean;
+import io.http.rpc.core.annotation.ServiceMapping;
+import io.http.rpc.core.serialize.SerializeScheme;
 import net.sf.cglib.proxy.MethodInterceptor;
 import net.sf.cglib.proxy.MethodProxy;
 import org.apache.commons.lang3.StringUtils;
@@ -42,14 +42,6 @@ public class ProxyExecutor implements MethodInterceptor {
             return methodProxy.invokeSuper(o, parameters);
         }
 
-        int length = parameters.length;
-
-        byte[][] parameterData = new byte[length][];
-
-        for (int i = 0; i < length; i++) {
-            parameterData[i] = serializeScheme.serialize(parameters[i]);
-        }
-
         String name = "";
 
         ServiceMapping mapping = method.getAnnotation(ServiceMapping.class);
@@ -61,7 +53,7 @@ public class ProxyExecutor implements MethodInterceptor {
             name = method.getName();
         }
 
-        RequestBean requestBean = new RequestBean(namespace, name, parameterData);
+        RequestBean requestBean = new RequestBean(namespace, name, parameters);
 
         byte[] rtv = serviceInvoker.invoke(url, requestBean);
 

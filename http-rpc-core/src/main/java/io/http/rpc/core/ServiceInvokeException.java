@@ -1,4 +1,4 @@
-package io.http.rpc;
+package io.http.rpc.core;
 
 /**
  * Created by manbu on 7/3/16.

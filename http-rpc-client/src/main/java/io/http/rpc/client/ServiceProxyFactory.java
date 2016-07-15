@@ -1,6 +1,6 @@
 package io.http.rpc.client;
 
-import io.http.rpc.serialize.ProtoSerializeScheme;
+import io.http.rpc.core.serialize.ProtoSerializeScheme;
 import org.springframework.beans.factory.InitializingBean;
 
 /**

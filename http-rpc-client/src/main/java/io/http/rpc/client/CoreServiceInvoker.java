@@ -1,6 +1,6 @@
 package io.http.rpc.client;
 
-import io.http.rpc.RequestBean;
+import io.http.rpc.core.RequestBean;
 
 /**
  * Created by manbu on 7/7/16.

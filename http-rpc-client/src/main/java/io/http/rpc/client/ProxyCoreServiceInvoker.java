@@ -1,8 +1,8 @@
 package io.http.rpc.client;
 
-import io.http.rpc.RequestBean;
-import io.http.rpc.ServiceInvokeException;
-import io.http.rpc.serialize.SerializeScheme;
+import io.http.rpc.core.RequestBean;
+import io.http.rpc.core.ServiceInvokeException;
+import io.http.rpc.core.serialize.SerializeScheme;
 import okhttp3.*;
 
 import java.io.IOException;

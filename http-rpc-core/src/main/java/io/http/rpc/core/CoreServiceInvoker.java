@@ -1,7 +1,7 @@
-package io.http.rpc;
+package io.http.rpc.core;
 
 /**
- * Hessian rpc core service.
+ * HTTP rpc core service.
  *
  * Created by manbu on 7/1/16.
  */
@@ -14,6 +14,6 @@ public interface CoreServiceInvoker {
      * @param parameters 参数列表
      *
      * */
-    byte[] invoke(String namespace, String name, byte[][] parameters);
+    Object invoke(String namespace, String name, Object[] parameters);
 
 }
