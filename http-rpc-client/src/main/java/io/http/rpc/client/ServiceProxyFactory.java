@@ -1,6 +1,6 @@
 package io.http.rpc.client;
 
-import io.http.rpc.core.serialize.ProtoSerializeScheme;
+import io.http.rpc.core.serialize.JsonSerializeScheme;
 import org.springframework.beans.factory.InitializingBean;
 
 /**
@@ -21,7 +21,7 @@ public class ServiceProxyFactory extends ProxyBuilder implements InitializingBea
     public void defaultInit() {
 
         if(serializeScheme == null) {
-            serializeScheme = new ProtoSerializeScheme();
+            serializeScheme = new JsonSerializeScheme();
         }
 
         if(serviceInvoker == null) {

@@ -1,7 +1,7 @@
 package io.http.rpc.server;
 
 
-import io.http.rpc.core.serialize.ProtoSerializeScheme;
+import io.http.rpc.core.serialize.JsonSerializeScheme;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 
@@ -39,7 +39,7 @@ public class HttpServiceExporter extends AbstractServiceExporter implements Init
         }
 
         if(serializeScheme == null) {
-            serializeScheme = new ProtoSerializeScheme();
+            serializeScheme = new JsonSerializeScheme();
         }
 
     }
