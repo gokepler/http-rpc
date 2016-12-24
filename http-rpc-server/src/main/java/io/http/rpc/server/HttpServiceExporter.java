@@ -2,7 +2,9 @@ package io.http.rpc.server;
 
 
 import io.http.rpc.core.serialize.JsonSerializeScheme;
+import io.http.rpc.core.serialize.SerializeScheme;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 
 import javax.servlet.ServletException;
@@ -39,8 +41,18 @@ public class HttpServiceExporter extends AbstractServiceExporter implements Init
         }
 
         if(serializeScheme == null) {
-            serializeScheme = new JsonSerializeScheme();
-        }
 
+            try {
+
+                serializeScheme = applicationContext.getBean(SerializeScheme.class);
+
+            } catch (NoSuchBeanDefinitionException e) {
+
+                logger.info("No serialize scheme defined, default '"+ JsonSerializeScheme.class.getName() +"'");
+
+                serializeScheme = new JsonSerializeScheme();
+
+            }
+        }
     }
 }

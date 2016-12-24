@@ -17,7 +17,7 @@ import java.io.OutputStream;
  */
 public abstract class AbstractServiceExporter extends RemotingSupport implements ServiceExecution, ServiceExporter, ApplicationContextAware {
 
-    private ApplicationContext applicationContext;
+    protected ApplicationContext applicationContext;
 
     protected ServiceRegistrationCenter registrationCenter;
 

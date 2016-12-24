@@ -4,20 +4,16 @@ import io.http.rpc.core.CoreServiceInvoker;
 import io.http.rpc.core.RequestBean;
 import io.http.rpc.core.ServiceInvokeException;
 import io.http.rpc.core.serialize.SerializeScheme;
-import io.http.rpc.core.serialize.ProtoSerializeScheme;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
-import org.springframework.beans.BeansException;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationContextAware;
 
 import java.lang.reflect.Method;
 
 /**
  * Created by manbu on 7/1/16.
  */
-public class HttpCoreService implements CoreServiceInvoker, InitializingBean, ApplicationContextAware {
+public class HttpCoreService implements CoreServiceInvoker {
 
     private ApplicationContext applicationContext;
 
@@ -62,24 +58,11 @@ public class HttpCoreService implements CoreServiceInvoker, InitializingBean, Ap
         this.registrationCenter = registrationCenter;
     }
 
-    @Override
-    public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
+    public void setApplicationContext(ApplicationContext applicationContext) {
         this.applicationContext = applicationContext;
     }
 
     public void setSerializeScheme(SerializeScheme serializeScheme) {
         this.serializeScheme = serializeScheme;
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-
-        if(serializeScheme == null) {
-            serializeScheme = applicationContext.getBean(SerializeScheme.class);
-        }
-
-        if(serializeScheme == null) {
-            serializeScheme = new ProtoSerializeScheme();
-        }
     }
 }
